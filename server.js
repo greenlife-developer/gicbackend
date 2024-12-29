@@ -15,7 +15,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Endpoint to send email
 app.post('/api/send-email', (req, res) => {
-  const { name, address, phone, email, qualification, cv } = req.body;
+  const { name, address, phone, email, qualification, cv, position } = req.body;
 
   console.log(name, address, phone, email, qualification, cv); // Should now log the values correctly
 
@@ -23,7 +23,7 @@ app.post('/api/send-email', (req, res) => {
     to: 'giclimited001@gmail.com', // Change to your recipient
     from: process.env.EMAIL_USER, // Change to your verified sender
     subject: 'New Job Application',
-    text: `Name: ${name}\nAddress: ${address}\nPhone: ${phone}\nEmail: ${email}\nQualification: ${qualification}\nCV Uploaded: ${cv}`,
+    text: `Name: ${name}\nAddress: ${address}\nPhone: ${phone}\nEmail: ${email}\nQualification: ${qualification}\Position: ${position}\nCV Uploaded: ${cv}`,
   };
 
   sgMail.send(msg)
